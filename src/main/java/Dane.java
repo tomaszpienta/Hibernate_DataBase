@@ -10,10 +10,17 @@ public class Dane {
 	@GeneratedValue
 	private Long Id;
 
-	@Column(name = "Dane1")
-	private String dane1;
-	private String dane2;
+	@Column(name = "Login")
+	private String logIn;
+	@Column(name = "Password")
+	private String password;
 
+//	public Dane(String login, String password){
+//		this.logIn = login;
+//		this.password = password;
+//	} Da sie utworzyæ now¹ osobe przez konstruktor? setlogIn + setpassword ??
+
+	
 	public Long getId() {
 		return Id;
 	}
@@ -22,20 +29,20 @@ public class Dane {
 		Id = id;
 	}
 
-	public String getDane1() {
-		return dane1;
+	public String getLogIn() {
+		return logIn;
 	}
 
-	public void setDane1(String dane1) {
-		this.dane1 = dane1;
+	public void setLogIn(String logIn) {
+		this.logIn = logIn;
 	}
 
-	public String getDane2() {
-		return dane2;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setDane2(String dane2) {
-		this.dane2 = dane2;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }
