@@ -11,7 +11,7 @@
 			<property name="javax.persistence.jdbc.password" value="kopytko" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://172.20.1.102/test" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
-			<property name="hibernate.hbm2ddl.auto" value="create" /> <!--  //W przypadku dopisywania do bazy usunąć!!!! -->
+			<property name="hibernate.hbm2ddl.auto" value="create" />
 		</properties>
 	</persistence-unit>
 </persistence>

@@ -14,12 +14,6 @@ public class Dane {
 	private String logIn;
 	@Column(name = "Password")
 	private String password;
-
-//	public Dane(String login, String password){
-//		this.logIn = login;
-//		this.password = password;
-//	} Da sie utworzyæ now¹ osobe przez konstruktor? setlogIn + setpassword ??
-
 	
 	public Long getId() {
 		return Id;
