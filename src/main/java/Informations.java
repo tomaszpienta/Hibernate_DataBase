@@ -1,3 +1,5 @@
+import java.io.Serializable;
+
 import javax.annotation.processing.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,10 +9,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Informations {
+public class Informations implements Serializable{
 	@Id
 	@GeneratedValue
-	private long Id;
+	private long id;
 
 	@Column(name = "Imie")
 	private String imie;
@@ -32,11 +34,11 @@ public class Informations {
 	}
 
 	public long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(long id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getImie() {
