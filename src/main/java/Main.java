@@ -1,14 +1,7 @@
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Join;
-import javax.persistence.criteria.Path;
-import javax.persistence.criteria.Root;
 
 public class Main {
 
@@ -23,38 +16,41 @@ public class Main {
 
 		m.addPerson();
 
-		/*
-		 * TypedQuery<Informations> querry = entityManager.
-		 * createQuery("select e from Informations e Join e.dane p where p.logIn = ?1",
-		 * Informations.class); querry.setParameter(1, "topik"); Informations result =
-		 * querry.getSingleResult(); System.out.println(result.getImie());
-		 * System.out.println(result.getNazwisko());
-		 */
-
-		// List<Informations> person = querry.getResultList();
 		
-		
-		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-		CriteriaQuery<Informations> query = builder.createQuery(Informations.class);
-		Root<Informations> guy = query.from(Informations.class);
-		Join<Dane, Informations> join = guy.join("Login");
+		  TypedQuery<Informations> querry = entityManager
+		  .createQuery("select e from Informations e Join e.dane p where p.logIn = ?1",
+		  Informations.class); querry.setParameter(1, "topik"); Informations result =
+		  querry.getSingleResult(); System.out.println(result.getFirstName());
+		  System.out.println(result.getLastName());
+		 
 
-		// Path<Object> login = guy.get("imie");
-
-		query.select(guy).where(builder.and(builder.equal(join, "topik")));
-
-		TypedQuery<Informations> q = entityManager.createQuery(query);
-		List<Informations> person = q.getResultList();
-
-		for (Informations informations : person) {
-			System.out.println(informations.getImie());
-			System.out.println(informations.getNazwisko());
-			System.out.println(informations.getWiek());
-			System.out.println();
-			System.out.println(informations.getDane().getLogIn());
-			System.out.println(informations.getDane().getPassword());
-
-		}
+			/*
+			 * // List<Informations> person = querry.getResultList();
+			 * 
+			 * CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+			 * 
+			 * CriteriaQuery<Informations> query = builder.createQuery(Informations.class);
+			 * Root<Informations> guy = query.from(Informations.class); Root<Dane> login =
+			 * query.from(Dane.class);
+			 * 
+			 * // javax.persistence.criteria.Predicate equal =
+			 * builder.equal(guy.get("imie"), login.get("logIn"));
+			 * 
+			 * // query.multiselect(guy.get("imie")).where(equal,
+			 * builder.equal(login.get("logIn"), guy.get("imie")));
+			 * 
+			 * TypedQuery<Informations> q = entityManager.createQuery(query);
+			 * List<Informations> person = q.getResultList();
+			 * 
+			 * for (Informations informations : person) {
+			 * System.out.println(informations.getImie());
+			 * System.out.println(informations.getNazwisko());
+			 * System.out.println(informations.getWiek()); System.out.println();
+			 * System.out.println(informations.getDane().getLogIn());
+			 * System.out.println(informations.getDane().getPassword()); }
+			 * 
+			 * Work out how to implement JPQL into Criteria API (same querry)
+			 */
 
 		entityManager.close();
 		entityManagerFactory.close();
@@ -67,16 +63,16 @@ public class Main {
 
 	}
 
-	public void addPersonCredentials(String login, String password, String imie, String nazwisko, int wiek) {
+	public void addPersonCredentials(String login, String password, String name, String surrname, int age) {
 		Dane person = new Dane();
 		person.setLogIn(login);
 		person.setPassword(password);
 
 		Informations per1 = new Informations();
-		per1.setImie(imie);
-		per1.setNazwisko(nazwisko);
-		per1.setWiek(wiek);
-		per1.setDane(person);
+		per1.setFirstName(name);
+		per1.setLastName(surrname);
+		per1.setAge(age);
+		per1.setData(person);
 
 		entityManager.getTransaction().begin();
 		entityManager.persist(person);

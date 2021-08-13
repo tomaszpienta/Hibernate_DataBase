@@ -14,24 +14,16 @@ public class Informations implements Serializable{
 	@GeneratedValue
 	private long id;
 
-	@Column(name = "Imie")
-	private String imie;
-	@Column(name = "Nazwisko")
-	private String nazwisko;
-	@Column(name = "Wiek")
-	private int wiek;
+	@Column(name = "Name")
+	private String firstName;
+	@Column(name = "Surrname")
+	private String lastName;
+	@Column(name = "Age")
+	private int age;
 
 	@OneToOne
 	@JoinColumn(name = "Login", referencedColumnName = "Login")
-	private Dane dane;
-
-	public Dane getDane() {
-		return dane;
-	}
-
-	public void setDane(Dane dane) {
-		this.dane = dane;
-	}
+	private Dane data;
 
 	public long getId() {
 		return id;
@@ -41,28 +33,36 @@ public class Informations implements Serializable{
 		this.id = id;
 	}
 
-	public String getImie() {
-		return imie;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setImie(String imie) {
-		this.imie = imie;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getNazwisko() {
-		return nazwisko;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setNazwisko(String nazwisko) {
-		this.nazwisko = nazwisko;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
-	public int getWiek() {
-		return wiek;
+	public int getAge() {
+		return age;
 	}
 
-	public void setWiek(int wiek) {
-		this.wiek = wiek;
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public Dane getData() {
+		return data;
+	}
+
+	public void setData(Dane data) {
+		this.data = data;
 	}
 
 }

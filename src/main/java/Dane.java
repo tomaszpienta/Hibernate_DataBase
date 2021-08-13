@@ -18,7 +18,7 @@ public class Dane implements Serializable{
 	@Column(name = "Password")
 	private String password;
 
-	@OneToOne(mappedBy = "dane")
+	@OneToOne(mappedBy = "data")
 	private Informations info;
 
 	public Informations getInfo() {
